@@ -1,9 +1,13 @@
 using UnityEngine;
 
+/// <summary>
+///  <para>`PlayerPrefs` is a class that stores Player preferences between game sessions. </para>
+/// <para> It can store string, float and integer values into the user’s platform registry.</para>
+/// <para> It can also store boolean, Vector2, Vector3 and Color values using multiple PlayerPrefs keys.</para>
+/// </summary>
 public static class PlayerPrefs
 {
   
-
     #region CustomPlayerPrefs
     
     
@@ -58,6 +62,26 @@ public static class PlayerPrefs
     }
     #endregion Vector3
     
+    #region Color
+    public static void SetColor(string key, Color value)
+    {
+        PlayerPrefs.SetFloat(key + "r", value.r);
+        PlayerPrefs.SetFloat(key + "g", value.g);
+        PlayerPrefs.SetFloat(key + "b", value.b);
+        PlayerPrefs.SetFloat(key + "a", value.a);
+    }
+    
+    public static Color GetColor(string key)
+    {
+        Color value = new Color();
+        value.r = PlayerPrefs.GetFloat(key + "r");
+        value.g = PlayerPrefs.GetFloat(key + "g");
+        value.b = PlayerPrefs.GetFloat(key + "b");
+        value.a = PlayerPrefs.GetFloat(key + "a");
+        return value;
+    }
+    
+    #endregion Color
   
    
    
@@ -121,7 +145,4 @@ public static class PlayerPrefs
     
     
     
-    
-    
-
 }
